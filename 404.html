@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found — Luminae Press</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+</head>
+<body data-page="home">
+  <header class="site-header" id="site-header"></header>
+  <main class="section">
+    <div class="wrap center stack-md" style="max-width: 620px; padding: 60px 0">
+      <span class="eyebrow" style="justify-self: center">404</span>
+      <h1 style="font-size: clamp(2.2rem, 5vw, 3.4rem)">This page slipped off the shelf.</h1>
+      <p class="muted">The link may be old, or the page may have moved. The ebooks are still where you left them.</p>
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap">
+        <a class="btn" href="/index.html">Back to home</a>
+        <a class="btn btn--ghost" href="/ebooks.html">Browse ebooks</a>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer" id="site-footer"></footer>
+  <script type="module" src="/js/site.js"></script>
+  <script type="module">
+    import { initChrome, getStore } from '/js/site.js';
+    getStore().then((store) => initChrome(store, store.settings)).catch(() => initChrome(null, {}));
+  </script>
+</body>
+</html>

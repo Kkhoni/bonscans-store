@@ -1,0 +1,11 @@
+node_modules/
+.env
+.runtime/
+data/store.json
+data/pdfs/
+data/tmp/
+data/.admin-password
+data/.session-secret
+public/uploads/
+server.log
+.cloud-attachments/

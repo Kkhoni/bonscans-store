@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Read your ebook — Luminae Press</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#12003f">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+</head>
+<body class="reader-body">
+  <div class="reader-bar">
+    <div style="display: flex; align-items: center; gap: 14px; min-width: 0">
+      <a class="btn btn--ghost btn--sm" id="back-link" href="/orders.html">← Back</a>
+      <div class="reader-title">
+        <strong id="reader-title">Loading your ebook…</strong>
+        <span>Online reader</span>
+      </div>
+    </div>
+    <div class="reader-actions">
+      <a class="btn btn--light btn--sm" id="reader-download" href="#" aria-disabled="true">Download PDF</a>
+    </div>
+  </div>
+
+  <iframe class="reader-frame" id="reader-frame" title="Ebook reader" src="about:blank"></iframe>
+
+  <div class="reader-fallback hide" id="reader-fallback">
+    <h1 id="reader-error-title" style="font-size: 1.6rem">We couldn’t open this ebook</h1>
+    <p class="muted" id="reader-error-text"></p>
+    <a class="btn" href="/orders.html">Open my purchases</a>
+  </div>
+
+  <script type="module" src="/js/site.js"></script>
+  <script type="module" src="/js/read.js"></script>
+</body>
+</html>

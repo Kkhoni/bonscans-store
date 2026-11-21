@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payment successful — Luminae Press</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#290087">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+</head>
+<body data-page="ebooks">
+  <header class="site-header" id="site-header"></header>
+
+  <main class="success-shell">
+    <div class="success-card" id="success-card">
+      <div class="success-mark" aria-hidden="true">✓</div>
+      <h1>Payment Successful!</h1>
+      <p class="lede">Your ebook is ready. Thank you for your purchase!</p>
+
+      <div class="success-cover">
+        <img id="book-cover" src="/assets/covers/pinterest.jpg" alt="Purchased ebook cover" width="500" height="750">
+      </div>
+      <h2 id="book-title" style="font-size: 1.5rem; color: var(--ultramarine)">Preparing your ebook…</h2>
+
+      <div class="success-actions">
+        <a class="btn" id="read-btn" href="#" aria-disabled="true">READ EBOOK ONLINE</a>
+        <a class="btn btn--light" id="download-btn" href="#" aria-disabled="true">DOWNLOAD EBOOK</a>
+      </div>
+
+      <div class="order-meta" id="order-meta"></div>
+
+      <p class="success-foot" id="link-note">Your ebook is unlocked for this order only.</p>
+
+      <div class="copy-line">
+        <button class="btn btn--ghost btn--sm" id="copy-link" type="button">Copy my purchase link</button>
+        <a class="btn btn--ghost btn--sm" href="/orders.html">My purchases</a>
+      </div>
+
+      <div id="success-error" class="notice notice--error hide" style="text-align: left"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script type="module" src="/js/site.js"></script>
+  <script type="module" src="/js/success.js"></script>
+</body>
+</html>

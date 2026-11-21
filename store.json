@@ -1,0 +1,94 @@
+{
+  "settings": {
+    "storeName": "Bons&cans",
+    "supportEmail": "klchongtham@gmail.com",
+    "supportPhone": "",
+    "upiId": "chongthamjane6@okhdfcbank",
+    "upiQr": "/uploads/upi-qr-1795262790272.png",
+    "currency": "INR"
+  },
+  "products": [
+    {
+      "id": "p1",
+      "slug": "pinterest",
+      "title": "How Anyone Can Make $$$$ on Pinterest",
+      "subtitle": "A practical playbook for turning Pinterest traffic into income.",
+      "description": "Pinterest is a visual search engine. What do we do when we need reference or aesthetic inspo for literally anything ?  We open Pinterest for one inspo pic and somehow end up scrolling for 2 hours. \n And that's how Pinterest gets you. You came for one picture, discovered 50 other things, and now you're clicking links to products you didn't even know existed. Well, that little rabbit hole? That's exactly how we're gonna make money after this tutorial.",
+      "price": 79,
+      "cover": "/uploads/covers/cover-p1-1795262239994.jpg",
+      "pdfFile": "p1-1795262148561.pdf",
+      "pdfOriginalName": "How anyone can make _ on Pinterest (1).pdf",
+      "pdfSize": 5590850,
+      "active": true,
+      "createdAt": "2026-11-21T11:43:47.695Z",
+      "updatedAt": "2026-11-21T12:00:21.604Z"
+    },
+    {
+      "id": "p2",
+      "slug": "amazon-affiliate",
+      "title": "Earning with Amazon Affiliate Marketing",
+      "subtitle": "Build a commission engine around products people already buy.",
+      "description": "The complete path from first link to first payout: choosing products, writing honest recommendations, tracking what converts, and staying compliant with Amazon’s programme rules.",
+      "price": 49,
+      "cover": "/uploads/covers/cover-p2-1795262299563.jpg",
+      "pdfFile": "p2-1795262346867.pdf",
+      "pdfOriginalName": "Earn with Affiliate Marketing on Insta.pdf",
+      "pdfSize": 2544662,
+      "active": true,
+      "createdAt": "2026-11-21T11:43:47.699Z",
+      "updatedAt": "2026-11-21T11:59:34.541Z"
+    },
+    {
+      "id": "p3",
+      "slug": "third-ebook",
+      "title": "100-DAYS EBOOK EARNINGS",
+      "subtitle": "From Your First Ebook to Your First Digital Sales",
+      "description": "What happens when you give yourself 100 days to turn your ideas into digital products and start selling them online?\n\nThis ebook follows a 100-day challenge focused on creating, launching and promoting ebooks, building an online storefront, experimenting with marketing strategies and learning how to attract potential buyers.\n\nWhether you're starting with zero experience or looking for a new online income stream, this challenge is about taking action, testing ideas, learning from results and building something of your own, one day at a time.",
+      "price": 49,
+      "cover": "/uploads/covers/cover-p3-1795262478253.jpg",
+      "pdfFile": "p3-1795262486069.pdf",
+      "pdfOriginalName": "MY 100-DAY EBOOK EARNING CHALLENGE HOW EVERYTHING WORKS So_ let me explain what I_m actually doing and how all these accounts are connected. I_m starting this challenge from absolute zero. No mone.pdf",
+      "pdfSize": 2129893,
+      "active": true,
+      "createdAt": "2026-11-21T11:43:47.699Z",
+      "updatedAt": "2026-11-21T12:04:07.824Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": "ord_d28bfa6aa39b9e8f24",
+      "publicId": "LMN-99D204",
+      "accessToken": "d61905a36426d04f5c822bd65dabb8ee6b42a46605736bc67ca6d2a23d7a49fa",
+      "productId": "p3",
+      "productTitle": "100-DAYS EBOOK EARNINGS",
+      "amount": 49,
+      "amountPaise": 4900,
+      "currency": "INR",
+      "status": "created",
+      "createdAt": "2026-11-21T12:21:22.575Z",
+      "customer": {
+        "name": "",
+        "email": "",
+        "phone": ""
+      }
+    },
+    {
+      "id": "ord_d0c544f99455fcfed9",
+      "publicId": "LMN-048093",
+      "accessToken": "d0f0d2d22774def8df56753d95d5088b8f9f9aaf019901999212e30401412922",
+      "productId": "p3",
+      "productTitle": "100-DAYS EBOOK EARNINGS",
+      "amount": 49,
+      "amountPaise": 4900,
+      "currency": "INR",
+      "status": "created",
+      "createdAt": "2026-11-21T12:20:31.925Z",
+      "customer": {
+        "name": "",
+        "email": "",
+        "phone": ""
+      }
+    }
+  ],
+  "payments": []
+}

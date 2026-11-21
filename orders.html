@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My purchases — Luminae Press</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#290087">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+</head>
+<body data-page="ebooks">
+  <header class="site-header" id="site-header"></header>
+
+  <main class="orders-shell">
+    <div>
+      <span class="eyebrow">Your shelf</span>
+      <h1 style="font-size: clamp(2rem, 4vw, 2.8rem); margin-top: 12px">My purchases</h1>
+      <p class="muted" style="margin-top: 10px; max-width: 60ch">Ebooks you bought on this device appear here. Your purchase link works on any device — copy it and keep it safe.</p>
+    </div>
+
+    <section class="orders-card">
+      <div class="panel-head" style="margin: 0">
+        <div>
+          <h2 style="font-size: 1.25rem">Saved on this device</h2>
+          <p class="muted" style="font-size: .82rem">Stored locally in your browser so you can reopen your ebooks quickly.</p>
+        </div>
+        <span class="pill pill--vanilla" id="saved-count">0</span>
+      </div>
+      <div id="saved-list" class="stack-sm"></div>
+    </section>
+
+    <section class="orders-card">
+      <h2>Open a purchase link</h2>
+      <p class="muted" style="font-size: .88rem">Paste the confirmation link you received after paying (it contains a long <code>token=…</code>).</p>
+      <form id="recover-form" class="stack-sm">
+        <div class="field">
+          <label for="recover-input">Purchase link or token</label>
+          <input id="recover-input" placeholder="https://…/order.html?token=…" autocomplete="off" spellcheck="false">
+        </div>
+        <button class="btn" type="submit" style="justify-self: start">Open my ebook</button>
+      </form>
+      <div id="recover-error" class="notice notice--error hide"></div>
+    </section>
+
+    <section class="orders-card">
+      <h2>Lost your link?</h2>
+      <p class="muted" style="font-size: .88rem">Email us the approximate purchase date, the ebook title and the amount paid. We’ll verify the transaction against our gateway records and resend your access link.</p>
+      <a class="btn btn--ghost" id="support-email" href="mailto:support@yourdomain.com" style="justify-self: start">Email support</a>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script type="module" src="/js/site.js"></script>
+  <script type="module" src="/js/orders.js"></script>
+</body>
+</html>

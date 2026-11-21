@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secure checkout — Luminae Press</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#290087">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+</head>
+<body data-page="ebooks">
+  <header class="site-header" id="site-header"></header>
+
+  <main class="checkout-shell">
+    <div class="wrap">
+      <div class="crumbs"><a href="/index.html">Home</a> <span>/</span> <a href="/ebooks.html">Ebooks</a> <span>/</span> <span>Checkout</span></div>
+
+      <div id="checkout-error" class="notice notice--error hide" role="alert"></div>
+
+      <div class="checkout-grid" id="checkout-grid">
+        <!-- Order summary -->
+        <aside class="summary-card" aria-label="Order summary">
+          <h2>Your order</h2>
+          <div class="summary-cover">
+            <img id="summary-cover" src="/assets/covers/pinterest.jpg" alt="Selected ebook cover" width="640" height="400">
+          </div>
+          <div class="stack-sm">
+            <span class="pill pill--dark" id="summary-type">PDF ebook</span>
+            <h3 id="summary-title" style="font-size: 1.32rem; color: var(--ultramarine)">Loading…</h3>
+            <p class="summary-note" id="summary-desc"></p>
+          </div>
+          <div class="summary-row"><span>Item</span><strong id="summary-item">Ebook</strong></div>
+          <div class="summary-row"><span>Format</span><strong>PDF · instant access</strong></div>
+          <div class="summary-row"><span>Taxes</span><strong>Included</strong></div>
+          <div class="summary-total">
+            <span>Total payable</span>
+            <strong id="summary-total">₹ —</strong>
+          </div>
+          <ul class="summary-list">
+            <li>Only this ebook is unlocked by this payment</li>
+            <li>Download or read online right after verification</li>
+            <li>Secure access link you can revisit anytime</li>
+          </ul>
+        </aside>
+
+        <!-- Payment -->
+        <section class="pay-card">
+          <div class="pay-head">
+            <div>
+              <span class="eyebrow">Secure checkout</span>
+              <h2>SCAN TO PAY</h2>
+              <p>Open your preferred UPI application and scan the QR code to complete your purchase.</p>
+            </div>
+            <span class="pill pill--vanilla" id="status-pill">Awaiting payment</span>
+          </div>
+
+          <div class="qr-panel">
+            <div class="qr-frame">
+              <img id="upi-qr" src="/assets/upi-qr.webp" alt="UPI QR code for Luminae Press" width="400" height="400">
+            </div>
+            <div class="qr-side">
+              <div class="stack-sm">
+                <span class="price-note" style="color: rgba(246,255,233,.6); letter-spacing: .14em; text-transform: uppercase; font-size: .68rem">Selected ebook</span>
+                <h3 id="qr-product">—</h3>
+              </div>
+              <div class="amount-badge">
+                <strong id="qr-amount">₹ —</strong>
+                <span>exact amount</span>
+              </div>
+              <div class="upi-id" id="upi-id">UPI ID loading…</div>
+              <ol class="steps-list">
+                <li>Scan the QR with any UPI app (GPay, PhonePe, Paytm, bank app).</li>
+                <li>Pay the exact amount shown above — do not round it.</li>
+                <li>Return here: gateway payments unlock automatically within seconds.</li>
+              </ol>
+              <p class="summary-note" style="color: rgba(246,255,233,.6)">
+                This static personal QR cannot be verified automatically by the store. For instant, automatic unlocking, use the secure gateway payment below — it supports UPI, UPI QR and cards.
+              </p>
+            </div>
+          </div>
+
+          <div class="gateway-box" id="gateway-box">
+            <div>
+              <h3>Pay &amp; unlock automatically</h3>
+              <p id="gateway-copy">You’ll be taken to a secure Razorpay window. Your ebook unlocks the moment the payment is verified — no screenshots, no waiting.</p>
+            </div>
+            <div class="gateway-chips">
+              <span class="chip">UPI</span>
+              <span class="chip">UPI QR</span>
+              <span class="chip">Cards</span>
+              <span class="chip">Netbanking</span>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="buyer-name">Name (optional)</label>
+                <input id="buyer-name" name="name" autocomplete="name" placeholder="Your name">
+              </div>
+              <div class="field">
+                <label for="buyer-email">Email (optional)</label>
+                <input id="buyer-email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
+              </div>
+            </div>
+            <div class="field">
+              <label for="buyer-phone">Phone (optional)</label>
+              <input id="buyer-phone" name="phone" type="tel" autocomplete="tel" placeholder="For the payment receipt">
+            </div>
+
+            <button class="btn btn--block" id="pay-now" type="button">
+              <span id="pay-label">Pay securely</span>
+            </button>
+            <div class="status-line"><span class="status-dot" id="status-dot"></span><span id="status-text">No payment started yet.</span></div>
+            <div id="pay-notice"></div>
+            <p class="summary-note" style="color: rgba(246,255,233,.55)">
+              Card and UPI details are entered on the gateway’s secure window — this store never sees them.
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
+  <script type="module" src="/js/site.js"></script>
+  <script type="module" src="/js/checkout.js"></script>
+</body>
+</html>

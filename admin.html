@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin — Luminae Press</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#290087">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+</head>
+<body class="admin-body">
+  <!-- Login -->
+  <section class="admin-login" id="login-view">
+    <form class="login-card" id="login-form">
+      <a class="brand" href="/index.html" style="margin-bottom: 6px">
+        <span class="brand-mark" aria-hidden="true">L</span>
+        <span class="brand-name">Luminae Press<small>Administrator</small></span>
+      </a>
+      <h1>Store control room</h1>
+      <p>Sign in to manage ebooks, prices, files, orders and revenue. This area is not linked from the storefront.</p>
+      <div class="field">
+        <label for="admin-password">Administrator password</label>
+        <input id="admin-password" type="password" autocomplete="current-password" required placeholder="••••••••••">
+      </div>
+      <div class="admin-error" id="login-error"></div>
+      <button class="btn btn--block" type="submit" id="login-button">Sign in</button>
+      <p class="login-hint">The password lives in <code>.env</code> as <code>ADMIN_PASSWORD</code>. If it was auto-generated, it is printed when the server starts and stored in <code>data/.admin-password</code>.</p>
+    </form>
+  </section>
+
+  <!-- Dashboard -->
+  <div class="admin-shell hide" id="dashboard-view">
+    <aside class="admin-side">
+      <a class="brand" href="/index.html">
+        <span class="brand-mark" aria-hidden="true">L</span>
+        <span class="brand-name">Luminae<small>Admin</small></span>
+      </a>
+      <nav class="admin-nav" aria-label="Dashboard sections">
+        <button type="button" data-section="overview" class="is-active">Overview</button>
+        <button type="button" data-section="products">Ebooks &amp; files</button>
+        <button type="button" data-section="orders">Orders</button>
+        <button type="button" data-section="payments">Payments</button>
+        <button type="button" data-section="settings">Settings &amp; QR</button>
+      </nav>
+      <div class="admin-side-foot">
+        <a class="link-quiet" href="/index.html" target="_blank" rel="noopener">View storefront ↗</a>
+        <button class="btn btn--ghost btn--sm" type="button" id="logout-button">Sign out</button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-top">
+        <div>
+          <h1 id="section-title">Overview</h1>
+          <p id="section-sub">Live figures from your store.</p>
+        </div>
+        <button class="btn btn--sm" type="button" id="refresh-button">Refresh data</button>
+      </div>
+
+      <!-- Overview -->
+      <section class="admin-section is-active" id="section-overview">
+        <div class="stat-grid" id="stat-grid"></div>
+        <div class="panel">
+          <div class="panel-head">
+            <div><h2>Sales by ebook</h2><p>Paid orders only. Failed payments unlock nothing.</p></div>
+          </div>
+          <div class="table-wrap">
+            <table class="admin-table">
+              <thead><tr><th>Ebook</th><th>Price</th><th>Sales</th><th>Revenue</th></tr></thead>
+              <tbody id="by-product-body"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel" id="config-panel">
+          <div class="panel-head"><div><h2>Payment &amp; delivery status</h2><p>What is actually connected right now.</p></div></div>
+          <div id="config-body"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><div><h2>Recent orders</h2><p>The last ten checkouts, paid or not.</p></div></div>
+          <div class="table-wrap">
+            <table class="admin-table">
+              <thead><tr><th>Reference</th><th>Ebook</th><th>Amount</th><th>Status</th><th>Created</th></tr></thead>
+              <tbody id="recent-orders-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Products -->
+      <section class="admin-section" id="section-products">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Ebook catalogue</h2>
+              <p>Each product is sold and delivered separately. Upload the PDF, set the price, replace the cover.</p>
+            </div>
+            <button class="btn btn--sm" type="button" id="add-product">+ Add ebook</button>
+          </div>
+          <p class="admin-note" style="margin-bottom: 16px">
+            Prices are in INR. An ebook only becomes purchasable when it has <strong>both</strong> a price and an uploaded PDF.
+            Private PDFs live in <code>data/pdfs</code> and are never served publicly — buyers receive short-lived signed links only.
+          </p>
+          <div id="products-list"></div>
+        </div>
+      </section>
+
+      <!-- Orders -->
+      <section class="admin-section" id="section-orders">
+        <div class="panel">
+          <div class="panel-head">
+            <div><h2>Customer orders</h2><p>Access links are private; only share them with the buyer.</p></div>
+            <select id="order-filter" class="field" style="width: auto; padding: 9px 12px; border-radius: 10px; background: rgba(16,0,56,.6); color: var(--honeydew); border: 1px solid rgba(246,255,233,.2)">
+              <option value="all">All orders</option>
+              <option value="paid">Paid only</option>
+              <option value="created">Awaiting payment</option>
+              <option value="failed">Failed</option>
+            </select>
+          </div>
+          <div class="table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr><th>Reference</th><th>Ebook</th><th>Amount</th><th>Status</th><th>Customer</th><th>Gateway</th><th>Created</th><th>Actions</th></tr>
+              </thead>
+              <tbody id="orders-body"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel">
+          <h2 style="font-size: 1.05rem; font-family: var(--sans); margin-bottom: 8px">Manual UPI verification</h2>
+          <p class="admin-note">
+            The static UPI QR cannot be verified by the gateway. If a customer pays to it, check your bank/UPI app for the exact amount and reference,
+            then use <strong>Mark paid</strong> with that reference. Only do this after you have personally confirmed the credit — it unlocks the file immediately.
+            With Razorpay connected, orders unlock automatically and never need this.
+          </p>
+        </div>
+      </section>
+
+      <!-- Payments -->
+      <section class="admin-section" id="section-payments">
+        <div class="panel">
+          <div class="panel-head"><div><h2>Payment log</h2><p>Every verified, failed and mismatched transaction the server recorded.</p></div></div>
+          <div class="table-wrap">
+            <table class="admin-table">
+              <thead><tr><th>Time</th><th>Order</th><th>Gateway ID</th><th>Event</th><th>Amount</th><th>Status</th><th>Source</th><th>Note</th></tr></thead>
+              <tbody id="payments-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Settings -->
+      <section class="admin-section" id="section-settings">
+        <div class="panel">
+          <div class="panel-head"><div><h2>Store details</h2><p>Shown across the storefront and support links.</p></div></div>
+          <form id="settings-form" class="stack-md">
+            <div class="field-row">
+              <div class="field"><label for="setting-store">Store name</label><input id="setting-store" name="storeName"></div>
+              <div class="field"><label for="setting-upi">UPI ID (display only)</label><input id="setting-upi" name="upiId" placeholder="name@bank"></div>
+            </div>
+            <div class="field-row">
+              <div class="field"><label for="setting-email">Support email</label><input id="setting-email" name="supportEmail" type="email"></div>
+              <div class="field"><label for="setting-phone">Support phone / WhatsApp</label><input id="setting-phone" name="supportPhone"></div>
+            </div>
+            <div><button class="btn btn--sm" type="submit">Save store details</button></div>
+          </form>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><div><h2>Payment QR image</h2><p>Shown on every checkout page as “SCAN TO PAY”.</p></div></div>
+          <div style="display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap">
+            <img class="qr-preview" id="qr-preview" src="/assets/upi-qr.webp" alt="Current payment QR">
+            <form id="qr-form" class="stack-sm">
+              <label class="file-row" style="cursor: pointer">
+                <span class="btn btn--ghost btn--sm">Choose new QR image</span>
+                <input type="file" id="qr-file" accept="image/png,image/jpeg,image/webp" hidden>
+              </label>
+              <span class="admin-note" id="qr-file-name">PNG, JPG or WebP · max 120 MB</span>
+              <button class="btn btn--sm" type="submit" id="qr-submit">Upload &amp; replace QR</button>
+            </form>
+          </div>
+          <p class="admin-note" style="margin-top: 16px">Note: a static personal UPI QR cannot be verified automatically. It is displayed for manual UPI transfers; automatic unlocking happens through gateway payments.</p>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><div><h2>Gateway configuration</h2><p>Read from the server environment — never editable in the browser.</p></div></div>
+          <div id="gateway-config"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="/js/admin.js"></script>
+</body>
+</html>
